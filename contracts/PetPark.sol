@@ -71,7 +71,7 @@ contract PetPark{
     /// @param _gender gender of user borrowing.
     /// @param _animalType type of animal user wants to borrow.
     function borrow(uint8 _age, Gender _gender, AnimalType _animalType) external validAge(_age) validAnimal(_animalType) validHuman(_gender) {
-        Borrower storage borrower = borrowerToAgeGenderMap[msg.sender];
+        Borrower memory borrower = borrowerToAgeGenderMap[msg.sender];
         //check if address has called this function before using other values for Gender and Age
         if(borrower.age > 0) {
             require(borrower.age == _age, "Invalid Age");
